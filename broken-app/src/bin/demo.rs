@@ -10,6 +10,9 @@ fn main() {
     let text = " Hello World ";
     println!("normalize: {}", normalize(text));
 
+    let avg = broken_app::average_positive(&nums);
+    println!("average_positive: {}", avg);
+
     let fib = algo::slow_fib(20);
     println!("fib(20): {}", fib);
 
