@@ -1,0 +1,11 @@
+    Finished `bench` profile [optimized] target(s) in 0.04s
+     Running benches/baseline.rs
+sum_even: 190ns
+slow_fib: 17.38371ms
+slow_dedup: 10.442416ms
+sum_even: 20ns
+slow_fib: 7.586417ms
+slow_dedup: 10.52993ms
+sum_even: 30ns
+slow_fib: 7.513481ms
+slow_dedup: 10.833777ms
