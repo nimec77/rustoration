@@ -1,0 +1,114 @@
+==40311== Memcheck, a memory error detector
+==40311== Copyright (C) 2002-2022, and GNU GPL'd, by Julian Seward et al.
+==40311== Using Valgrind-3.22.0 and LibVEX; rerun with -h for copyright info
+==40311== Command: target/debug/deps/integration-9db19c1704114f53
+==40311== 
+
+running 6 tests
+test averages_only_positive ... ok
+test sums_even_numbers ... ok
+test normalize_simple ... ok
+test dedup_preserves_uniques ... ok
+test fib_small_numbers ... ok
+test counts_non_zero_bytes ... ok
+
+test result: ok. 6 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.19s
+
+==40311== 
+==40311== HEAP SUMMARY:
+==40311==     in use at exit: 597 bytes in 3 blocks
+==40311==   total heap usage: 756 allocs, 753 frees, 89,626 bytes allocated
+==40311== 
+==40311== 5 bytes in 1 blocks are definitely lost in loss record 1 of 3
+==40311==    at 0x4846828: malloc (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
+==40311==    by 0x1CB989: <alloc::raw_vec::RawVecInner>::try_allocate_in (in /home/comrade77/RustProjects/rustoration/target/debug/deps/integration-9db19c1704114f53)
+==40311==    by 0x188C07: <alloc::raw_vec::RawVecInner>::with_capacity_in (mod.rs:418)
+==40311==    by 0x183CA5: with_capacity_in<u8, alloc::alloc::Global> (mod.rs:177)
+==40311==    by 0x183CA5: with_capacity_in<u8, alloc::alloc::Global> (mod.rs:967)
+==40311==    by 0x183CA5: <u8 as <[_]>::to_vec_in::ConvertVec>::to_vec::<alloc::alloc::Global> (slice.rs:448)
+==40311==    by 0x183D8B: to_vec_in<u8, alloc::alloc::Global> (slice.rs:400)
+==40311==    by 0x183D8B: <[u8]>::to_vec (slice.rs:376)
+==40311==    by 0x184D8C: broken_app::leak_buffer (lib.rs:23)
+==40311==    by 0x14360C: integration::counts_non_zero_bytes (integration.rs:13)
+==40311==    by 0x143DF6: integration::counts_non_zero_bytes::{closure#0} (integration.rs:11)
+==40311==    by 0x1442B5: <integration::counts_non_zero_bytes::{closure#0} as core::ops::function::FnOnce<()>>::call_once (function.rs:250)
+==40311==    by 0x14463A: call_once<fn() -> core::result::Result<(), alloc::string::String>, ()> (function.rs:250)
+==40311==    by 0x14463A: test::__rust_begin_short_backtrace::<core::result::Result<(), alloc::string::String>, fn() -> core::result::Result<(), alloc::string::String>> (lib.rs:663)
+==40311==    by 0x15102A: {closure#0} (lib.rs:686)
+==40311==    by 0x15102A: call_once<core::result::Result<(), alloc::string::String>, test::run_test_in_process::{closure_env#0}> (unwind_safe.rs:274)
+==40311==    by 0x15102A: do_call<core::panic::unwind_safe::AssertUnwindSafe<test::run_test_in_process::{closure_env#0}>, core::result::Result<(), alloc::string::String>> (panicking.rs:581)
+==40311==    by 0x15102A: catch_unwind<core::result::Result<(), alloc::string::String>, core::panic::unwind_safe::AssertUnwindSafe<test::run_test_in_process::{closure_env#0}>> (panicking.rs:544)
+==40311==    by 0x15102A: catch_unwind<core::panic::unwind_safe::AssertUnwindSafe<test::run_test_in_process::{closure_env#0}>, core::result::Result<(), alloc::string::String>> (panic.rs:359)
+==40311==    by 0x15102A: run_test_in_process (lib.rs:686)
+==40311==    by 0x15102A: test::run_test::{closure#0} (lib.rs:607)
+==40311==    by 0x14C743: {closure#1} (lib.rs:637)
+==40311==    by 0x14C743: std::sys::backtrace::__rust_begin_short_backtrace::<test::run_test::{closure#1}, ()> (backtrace.rs:166)
+==40311== 
+==40311== 48 bytes in 1 blocks are possibly lost in loss record 2 of 3
+==40311==    at 0x4846828: malloc (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
+==40311==    by 0x1B012B: alloc (unix.rs:14)
+==40311==    by 0x1B012B: alloc_impl (alloc.rs:151)
+==40311==    by 0x1B012B: allocate (alloc.rs:214)
+==40311==    by 0x1B012B: {closure#0}<std::thread::thread::Inner, std::alloc::System> (sync.rs:805)
+==40311==    by 0x1B012B: allocate_for_layout<core::mem::maybe_uninit::MaybeUninit<std::thread::thread::Inner>, alloc::sync::{impl#17}::new_uninit_in::{closure_env#0}<std::thread::thread::Inner, std::alloc::System>, fn(*mut u8) -> *mut alloc::sync::ArcInner<core::mem::maybe_uninit::MaybeUninit<std::thread::thread::Inner>>> (sync.rs:2162)
+==40311==    by 0x1B012B: new_uninit_in<std::thread::thread::Inner, std::alloc::System> (sync.rs:803)
+==40311==    by 0x1B012B: <std::thread::thread::Thread>::new (thread.rs:102)
+==40311==    by 0x1BDB2F: std::thread::current::init_current (current.rs:294)
+==40311==    by 0x1A5345: current_or_unnamed (current.rs:251)
+==40311==    by 0x1A5345: <std::sync::mpmc::context::Context>::new (context.rs:72)
+==40311==    by 0x144D7A: __rust_std_internal_init_fn (context.rs:43)
+==40311==    by 0x144D7A: call_once<fn() -> core::cell::Cell<core::option::Option<std::sync::mpmc::context::Context>>, ()> (function.rs:250)
+==40311==    by 0x144D7A: unwrap_or_else<core::cell::Cell<core::option::Option<std::sync::mpmc::context::Context>>, fn() -> core::cell::Cell<core::option::Option<std::sync::mpmc::context::Context>>> (option.rs:1067)
+==40311==    by 0x144D7A: <std::sys::thread_local::native::lazy::Storage<core::cell::Cell<core::option::Option<std::sync::mpmc::context::Context>>, ()>>::get_or_init_slow::<<std::sync::mpmc::context::Context>::with::CONTEXT::__rust_std_internal_init_fn> (lazy.rs:80)
+==40311==    by 0x15BDA2: get_or_init<core::cell::Cell<core::option::Option<std::sync::mpmc::context::Context>>, (), fn() -> core::cell::Cell<core::option::Option<std::sync::mpmc::context::Context>>> (lazy.rs:62)
+==40311==    by 0x15BDA2: {closure#0} (mod.rs:97)
+==40311==    by 0x15BDA2: call_once<std::sync::mpmc::context::{impl#0}::with::CONTEXT::{constant#0}::{closure_env#0}, (core::option::Option<&mut core::option::Option<core::cell::Cell<core::option::Option<std::sync::mpmc::context::Context>>>>)> (function.rs:250)
+==40311==    by 0x15BDA2: try_with<core::cell::Cell<core::option::Option<std::sync::mpmc::context::Context>>, std::sync::mpmc::context::{impl#0}::with::{closure_env#1}<std::sync::mpmc::list::{impl#3}::recv::{closure_env#1}<test::event::CompletedTest>, ()>, ()> (local.rs:512)
+==40311==    by 0x15BDA2: with<std::sync::mpmc::list::{impl#3}::recv::{closure_env#1}<test::event::CompletedTest>, ()> (context.rs:53)
+==40311==    by 0x15BDA2: <std::sync::mpmc::list::Channel<test::event::CompletedTest>>::recv (list.rs:442)
+==40311==    by 0x168B93: recv_deadline<test::event::CompletedTest> (mod.rs:1120)
+==40311==    by 0x168B93: recv_timeout<test::event::CompletedTest> (mod.rs:1052)
+==40311==    by 0x168B93: recv_timeout<test::event::CompletedTest> (mpsc.rs:909)
+==40311==    by 0x168B93: run_tests<test::console::run_tests_console::{closure_env#2}> (lib.rs:456)
+==40311==    by 0x168B93: test::console::run_tests_console (console.rs:327)
+==40311==    by 0x157178: test_main_with_exit_callback<test::test_main::{closure_env#0}> (lib.rs:160)
+==40311==    by 0x157178: test::test_main (lib.rs:101)
+==40311==    by 0x1549CA: test::test_main_static (lib.rs:183)
+==40311==    by 0x143412: integration::main (integration.rs:1)
+==40311==    by 0x14419A: <fn() as core::ops::function::FnOnce<()>>::call_once (function.rs:250)
+==40311==    by 0x1433AD: std::sys::backtrace::__rust_begin_short_backtrace::<fn(), ()> (backtrace.rs:166)
+==40311== 
+==40311== 544 bytes in 1 blocks are still reachable in loss record 3 of 3
+==40311==    at 0x4846828: malloc (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
+==40311==    by 0x1C2609: alloc (alloc.rs:95)
+==40311==    by 0x1C2609: alloc_impl_runtime (alloc.rs:190)
+==40311==    by 0x1C2609: alloc_impl (alloc.rs:312)
+==40311==    by 0x1C2609: allocate (alloc.rs:429)
+==40311==    by 0x1C2609: try_new_uninit_in<alloc::collections::btree::node::LeafNode<usize, std::sys::pal::unix::stack_overflow::thread_info::ThreadInfo>, alloc::alloc::Global> (boxed.rs:582)
+==40311==    by 0x1C2609: new_uninit_in<alloc::collections::btree::node::LeafNode<usize, std::sys::pal::unix::stack_overflow::thread_info::ThreadInfo>, alloc::alloc::Global> (boxed.rs:549)
+==40311==    by 0x1C2609: new<usize, std::sys::pal::unix::stack_overflow::thread_info::ThreadInfo, alloc::alloc::Global> (node.rs:87)
+==40311==    by 0x1C2609: new_leaf<usize, std::sys::pal::unix::stack_overflow::thread_info::ThreadInfo, alloc::alloc::Global> (node.rs:225)
+==40311==    by 0x1C2609: insert_entry<usize, std::sys::pal::unix::stack_overflow::thread_info::ThreadInfo, alloc::alloc::Global> (entry.rs:403)
+==40311==    by 0x1C2609: insert<usize, std::sys::pal::unix::stack_overflow::thread_info::ThreadInfo, alloc::alloc::Global> (entry.rs:377)
+==40311==    by 0x1C2609: insert<usize, std::sys::pal::unix::stack_overflow::thread_info::ThreadInfo, alloc::alloc::Global> (map.rs:1053)
+==40311==    by 0x1C2609: std::sys::pal::unix::stack_overflow::thread_info::set_current_info (thread_info.rs:122)
+==40311==    by 0x1BB8AE: init (stack_overflow.rs:179)
+==40311==    by 0x1BB8AE: init (mod.rs:41)
+==40311==    by 0x1BB8AE: init (rt.rs:118)
+==40311==    by 0x1BB8AE: {closure#0} (rt.rs:173)
+==40311==    by 0x1BB8AE: do_call<std::rt::lang_start_internal::{closure_env#0}, isize> (panicking.rs:581)
+==40311==    by 0x1BB8AE: catch_unwind<isize, std::rt::lang_start_internal::{closure_env#0}> (panicking.rs:544)
+==40311==    by 0x1BB8AE: catch_unwind<std::rt::lang_start_internal::{closure_env#0}, isize> (panic.rs:359)
+==40311==    by 0x1BB8AE: std::rt::lang_start_internal (rt.rs:171)
+==40311==    by 0x144086: std::rt::lang_start::<()> (rt.rs:205)
+==40311==    by 0x14386D: main (in /home/comrade77/RustProjects/rustoration/target/debug/deps/integration-9db19c1704114f53)
+==40311== 
+==40311== LEAK SUMMARY:
+==40311==    definitely lost: 5 bytes in 1 blocks
+==40311==    indirectly lost: 0 bytes in 0 blocks
+==40311==      possibly lost: 48 bytes in 1 blocks
+==40311==    still reachable: 544 bytes in 1 blocks
+==40311==         suppressed: 0 bytes in 0 blocks
+==40311== 
+==40311== For lists of detected and suppressed errors, rerun with: -s
+==40311== ERROR SUMMARY: 2 errors from 2 contexts (suppressed: 0 from 0)
