@@ -1,0 +1,38 @@
+    Finished `test` profile [unoptimized + debuginfo] target(s) in 0.26s
+     Running unittests src/lib.rs (/home/comrade77/RustProjects/rustoration/target/debug/deps/broken_app-735c26b9b1e4c5a6)
+
+running 0 tests
+
+test result: ok. 0 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s
+
+     Running unittests src/bin/demo.rs (/home/comrade77/RustProjects/rustoration/target/debug/deps/demo-394dca0dc6eaed43)
+
+running 0 tests
+
+test result: ok. 0 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s
+
+     Running tests/integration.rs (/home/comrade77/RustProjects/rustoration/target/debug/deps/integration-9db19c1704114f53)
+
+running 7 tests
+test averages_only_positive ... ok
+test counts_non_zero_bytes ... ok
+test dedup_preserves_uniques ... ok
+test fib_small_numbers ... ok
+test normalize_simple ... ok
+test sums_even_numbers ... ok
+thread 'test_use_after_free' (25585) panicked at broken-app/tests/integration.rs:42:5:
+assertion `left == right` failed
+  left: -70241427
+ right: 84
+
+note: run with `RUST_BACKTRACE=1` environment variable to display a backtrace
+test test_use_after_free ... FAILED
+
+failures:
+
+failures:
+    test_use_after_free
+
+test result: FAILED. 6 passed; 1 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s
+
+error: test failed, to rerun pass `--test integration`

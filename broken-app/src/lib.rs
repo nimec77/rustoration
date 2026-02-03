@@ -63,6 +63,8 @@ pub unsafe fn use_after_free() -> i32 {
     let b = Box::new(42_i32);
     let raw = Box::into_raw(b);
     let val = unsafe { *raw };
+    let result = val + unsafe { *raw };
     unsafe { drop(Box::from_raw(raw)) };
-    val + unsafe { *raw }
+
+    result
 }
