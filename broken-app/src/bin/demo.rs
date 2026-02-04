@@ -13,8 +13,8 @@ fn main() {
     let avg = broken_app::average_positive(&nums);
     println!("average_positive: {}", avg);
 
-    let fib = algo::slow_fib(20);
-    println!("fib(20): {}", fib);
+    let fib = algo::slow_fib(40);
+    println!("fib(40): {}", fib);
 
     let uniq = algo::slow_dedup(&[1, 2, 2, 3, 1, 4, 4]);
     println!("dedup: {:?}", uniq);
