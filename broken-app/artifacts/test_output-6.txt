@@ -1,0 +1,40 @@
+   Compiling broken-app v0.1.0 (/home/comrade77/RustProjects/rustoration/broken-app)
+    Finished `test` profile [unoptimized + debuginfo] target(s) in 0.34s
+     Running unittests src/lib.rs (/home/comrade77/RustProjects/rustoration/target/debug/deps/broken_app-735c26b9b1e4c5a6)
+
+running 0 tests
+
+test result: ok. 0 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s
+
+     Running unittests src/bin/demo.rs (/home/comrade77/RustProjects/rustoration/target/debug/deps/demo-394dca0dc6eaed43)
+
+running 0 tests
+
+test result: ok. 0 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s
+
+     Running tests/integration.rs (/home/comrade77/RustProjects/rustoration/target/debug/deps/integration-9db19c1704114f53)
+
+running 8 tests
+
+thread 'normalize_simple' (21478) panicked at broken-app/tests/integration.rs:29:5:
+assertion `left == right` failed
+  left: "hello\tworld\n"
+ right: "helloworld"
+note: run with `RUST_BACKTRACE=1` environment variable to display a backtrace
+test averages_only_positive ... ok
+test counts_non_zero_bytes ... ok
+test fib_small_numbers ... ok
+test normalize_simple ... FAILED
+test dedup_preserves_uniques ... ok
+test sums_even_numbers ... ok
+test test_use_after_free ... ok
+test race_increment_is_correct ... ok
+
+failures:
+
+failures:
+    normalize_simple
+
+test result: FAILED. 7 passed; 1 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s
+
+error: test failed, to rerun pass `--test integration`
