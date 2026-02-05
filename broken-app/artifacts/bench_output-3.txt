@@ -1,0 +1,11 @@
+    Finished `bench` profile [optimized + debuginfo] target(s) in 0.32s
+     Running benches/baseline.rs (target/release/deps/baseline-fb99ba53632cdb73)
+sum_even: 231ns
+slow_fib: 271ns
+slow_dedup: 857.156µs
+sum_even: 70ns
+slow_fib: 231ns
+slow_dedup: 653.655µs
+sum_even: 70ns
+slow_fib: 211ns
+slow_dedup: 654.386µs
