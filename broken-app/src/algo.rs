@@ -3,11 +3,13 @@ use std::collections::HashSet;
 /// Намеренно низкопроизводительная реализация.
 pub fn slow_dedup(values: &[u64]) -> Vec<u64> {
     let mut seen = HashSet::new();
-    values
+    let mut result: Vec<u64> = values
         .iter()
         .filter(|v| seen.insert(**v))
         .copied()
-        .collect()
+        .collect();
+    result.sort_unstable();
+    result
 }
 
 /// Классическая экспоненциальная реализация без мемоизации — будет медленной на больших n.

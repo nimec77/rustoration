@@ -1,0 +1,11 @@
+    Finished `bench` profile [optimized + debuginfo] target(s) in 0.04s
+     Running benches/baseline.rs (/home/comrade77/RustProjects/rustoration/target/release/deps/baseline-fb99ba53632cdb73)
+sum_even: 90ns
+slow_fib: 120ns
+slow_dedup: 334.246µs
+sum_even: 20ns
+slow_fib: 120ns
+slow_dedup: 258.184µs
+sum_even: 30ns
+slow_fib: 110ns
+slow_dedup: 269.846µs
